@@ -1,1 +1,10 @@
 <h1>about works!</h1>
+<ul>
+  <li>User1: <span [style]="user1.activeStyle">{{ user1.name }} (color: {{ user1.activeStyle.color }})</span> </li>
+  <li>User2: <span [style]="user2.activeStyle">{{ user2.name }}(color: {{ user2.activeStyle.color }}) </span> </li>
+</ul>
+<button (click)="switchStyle()">Switch style</button>
+<div>
+  <label for="">New user1 name</label>
+  <input type="text" [(ngModel)]="user1.name">
+</div>
