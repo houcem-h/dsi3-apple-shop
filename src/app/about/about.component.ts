@@ -30,16 +30,18 @@ export class AboutComponent implements OnInit {
     }
   };
 
+  public today = new Date();
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  private color: any;
   public switchStyle() {
-    const color = this.user1.activeStyle.color;
+    this.color = this.user1.activeStyle.color;
     this.user1.activeStyle.color = this.user2.activeStyle.color;
-    this.user2.activeStyle.color = color;
-    alert('Style changed');
+    this.user2.activeStyle.color = this.color;
   }
 
 }
