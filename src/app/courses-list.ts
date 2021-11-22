@@ -1,4 +1,5 @@
-let courses: [] = [
+import { Course } from "./course.model";
+let courses: Course[] = [
   {
     id: '8f4aa769-7841-424c-a817-a6b50ae75c66',
     title: 'Introduction to Computer Science',
