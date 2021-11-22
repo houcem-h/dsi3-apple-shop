@@ -32,6 +32,8 @@ export class AboutComponent implements OnInit {
     },
   ];
 
+  public choice: string = "SEM3";
+
 
   public today = new Date();
 

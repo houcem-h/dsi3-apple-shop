@@ -13,3 +13,13 @@
 <p>{{ today | date:'longDate' }}</p>
 <p>{{ today | date:'shortTime' }}</p>
 <p>{{ today | date:'fullDate' }}</p>
+
+<hr>
+<div *ngIf="choice === 'DSI33'; then choiceAngular; else otherChoice"></div>
+<ng-template #choiceAngular>
+  <p>You chose Angular</p>
+</ng-template>
+<ng-template #otherChoice>
+  <p>No Angular</p>
+  <p>You chose {{ choice }}</p>
+</ng-template>
