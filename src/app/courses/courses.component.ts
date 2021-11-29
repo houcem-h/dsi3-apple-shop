@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { LocalStorageService } from "src/app/services/local-storage.service";
+import { CartService } from "src/app/services/cart.service";
 
 import {courses} from "./../courses-list";
 import { Course } from "./../course.model";
@@ -14,32 +14,19 @@ export class CoursesComponent implements OnInit {
 
   public coursesList: Course[] = courses;
 
-  public cartContent: any[]= [];
+  // public cartContent: any[]= [];
 
   constructor(
-    private localStorageService: LocalStorageService
+    private cartService: CartService
   ) { }
 
   ngOnInit(): void {
-    this.cartContent = this.localStorageService.get('cart');
-
+    // this.cartContent = this.cartService.get();
 
   }
 
-  public addToCart(id: String):void {
-    this.cartContent.filter(elem => elem.id === id)[0] ? this.cartContent.filter(elem => elem.id === id)[0].quantity++ : this.cartContent.push({id: id, quantity: 1});
-    // equivalent to
-    // if(this.cartContent.filter(elem => elem.id === id)[0]) {
-    //   this.cartContent.filter(elem => elem.id === id)[0].quantity++
-    // } else {
-    //   this.cartContent.push({id: id, quantity: 1})
-    // }
-    // Hedi's question
-    // if(!this.cartContent.filter(elem => elem.id === id)[0]) {
-    //   this.cartContent.push({id: id, quantity: 1})
-    // }
-
-    this.localStorageService.set('cart', this.cartContent);
+  public addToCart(id: string):void {
+    this.cartService.add(id);
   }
 
 }
