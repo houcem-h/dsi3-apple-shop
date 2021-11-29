@@ -22,7 +22,18 @@ export class CoursesComponent implements OnInit {
   }
 
   public addToCart(id: String):void {
-    this.cartContent.push(id);
+    this.cartContent.filter(elem => elem.id === id)[0] ? this.cartContent.filter(elem => elem.id === id)[0].quantity++ : this.cartContent.push({id: id, quantity: 1});
+    // equivalent to
+    // if(this.cartContent.filter(elem => elem.id === id)[0]) {
+    //   this.cartContent.filter(elem => elem.id === id)[0].quantity++
+    // } else {
+    //   this.cartContent.push({id: id, quantity: 1})
+    // }
+    // Hedi's question
+    // if(!this.cartContent.filter(elem => elem.id === id)[0]) {
+    //   this.cartContent.push({id: id, quantity: 1})
+    // }
+
     localStorage.setItem('cart', JSON.stringify(this.cartContent));
   }
 
