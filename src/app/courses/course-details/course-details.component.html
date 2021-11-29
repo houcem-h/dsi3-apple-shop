@@ -1,4 +1,25 @@
-<p>course-details works!</p>
-<ul>
-  <li>{{ course?.title }}</li>
-</ul>
+<h3>Courses details</h3>
+<div class="card mb-3">
+  <img src="{{ course?.image }}" class="card-img-top" alt="{{ course?.title }}">
+  <div class="card-img-overlay">
+    <h5 class="card-title">{{ course?.title }}</h5>
+    <!-- <p class="card-text">By: <strong>{{ course?.instructor }}</strong></p>
+    <p class="card-text">Last updated: <strong>{{ course?.last_update }}</strong></p> -->
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">{{ course?.title }}</h4>
+    <p class="card-text"><strong>Description:</strong> {{ course?.description }}.</p>
+    <p class="card-text"><strong>Instructor:</strong> {{ course?.instructor }}.</p>
+    <p class="card-text"><strong>Language:</strong> {{ course?.language }}.</p>
+    <p class="card-text"><strong>Price:</strong> {{ course?.price|currency }}.</p>
+    <p class="card-text"><strong>Goals:</strong></p>
+    <ul>
+      <li *ngFor="let goal of course?.goals">{{ goal }}</li>
+    </ul>
+    <p class="card-text"><strong>Requirements:</strong></p>
+    <ul>
+      <li *ngFor="let requirement of course?.requirements">{{ requirement }}</li>
+    </ul>
+    <p class="card-text text-end"><small class="text-muted">Last updated: {{ course?.last_update }}</small></p>
+  </div>
+</div>
