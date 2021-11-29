@@ -25,7 +25,7 @@
                 <div class="btn-group">
                   <button routerLink="/courses/{{course.id}}" type="button" class="btn btn-sm btn-outline-secondary"><i
                       class="bi bi-zoom-in"></i></button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary"><i
+                  <button (click)="addToCart(course.id)" type="button" class="btn btn-sm btn-outline-secondary"><i
                       class="bi bi-cart-plus"></i></button>
                 </div>
                 <small class="text-muted">{{ course.price|currency:'EUR' }}</small>

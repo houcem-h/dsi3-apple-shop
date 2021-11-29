@@ -18,4 +18,8 @@ export class CoursesComponent implements OnInit {
     // console.log(this.coursesList);
   }
 
+  public addToCart(id: String):void {
+    localStorage.setItem('cart', JSON.stringify(id));
+  }
+
 }
