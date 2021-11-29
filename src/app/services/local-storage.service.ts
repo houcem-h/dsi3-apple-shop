@@ -8,7 +8,7 @@ export class LocalStorageService {
   constructor() { }
 
   get(itemName: string) {
-    return JSON.parse(localStorage.getItem(itemName) || '') || [];
+    return JSON.parse(localStorage.getItem(itemName) || '[]') || [];
   }
 
   set(itemName: string, item: any) {
