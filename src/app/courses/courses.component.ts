@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { LocalStorageService } from "src/app/services/local-storage.service";
+
 import {courses} from "./../courses-list";
 import { Course } from "./../course.model";
 
@@ -14,10 +16,13 @@ export class CoursesComponent implements OnInit {
 
   public cartContent: any[]= [];
 
-  constructor() { }
+  constructor(
+    private localStorageService: LocalStorageService
+  ) { }
 
   ngOnInit(): void {
-    this.cartContent = JSON.parse(localStorage.getItem('cart') || '') || [];
+    this.cartContent = this.localStorageService.get('cart');
+
 
   }
 
@@ -34,7 +39,7 @@ export class CoursesComponent implements OnInit {
     //   this.cartContent.push({id: id, quantity: 1})
     // }
 
-    localStorage.setItem('cart', JSON.stringify(this.cartContent));
+    this.localStorageService.set('cart', this.cartContent);
   }
 
 }
