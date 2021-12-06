@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CartService } from "src/app/services/cart.service";
+import { CourseService } from "src/app/services/course.service";
 
-import {courses} from "./../courses-list";
+// import {courses} from "./../courses-list";
 import { Course } from "./../course.model";
 
 @Component({
@@ -12,16 +13,20 @@ import { Course } from "./../course.model";
 })
 export class CoursesComponent implements OnInit {
 
-  public coursesList: Course[] = courses;
+  public coursesList: any = [];
 
   // public cartContent: any[]= [];
 
   constructor(
-    private cartService: CartService
+    private cartService: CartService,
+    private courseService: CourseService
   ) { }
 
   ngOnInit(): void {
     // this.cartContent = this.cartService.get();
+    this.courseService.all().subscribe(
+      res => this.coursesList = res
+    );
 
   }
 

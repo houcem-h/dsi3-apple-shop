@@ -7,6 +7,8 @@ import { HttpClient } from "@angular/common/http";
 })
 export class CourseService {
 
+  private apiUrl = 'http://localhost:3000/courses';
+
   constructor(private http: HttpClient) { }
 
   /**
@@ -14,6 +16,7 @@ export class CourseService {
    * @returns Observable<Course[]>
    */
   all() {
+    return this.http.get(this.apiUrl);
   }
 
 
