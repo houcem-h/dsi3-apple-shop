@@ -37,6 +37,15 @@ export class CartService {
     return this.localStorageService.get('cart')
   }
 
+  clear() {
+    // 1st method
+    this.cartContent = [];
+    this.localStorageService.set('cart', this.cartContent);
+
+    // 2nd method
+    // this.localStorageService.clear('cart');
+  }
+
 
   // public get() {
   //   return this.cartContent;

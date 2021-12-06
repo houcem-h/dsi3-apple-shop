@@ -14,7 +14,8 @@ export class CartComponent implements OnInit {
   totalPrice: number = 0;
   TAX_RATE: number = 0.2;
 
-  constructor( private cartService: CartService) { }
+  constructor( private cartService: CartService) {
+   }
 
   ngOnInit(): void {
     this.getCartContentDetails();
@@ -38,6 +39,11 @@ export class CartComponent implements OnInit {
     this.cartContent.forEach((item: { price: number; quantity: number; }) => {
       this.totalPrice += item.price * item.quantity;
     });
+  }
+
+  clearCart() {
+    this.cartService.clear();
+    this.ngOnInit();
   }
 
 }
