@@ -1,0 +1,17 @@
+<div class="card shadow-sm">
+  <img [src]="courseItem.image" [alt]="courseItem.title">
+
+  <div class="card-body">
+    <h3>{{ courseItem.title }}</h3>
+    <p class="card-text">{{ courseItem.description|slice:0:70 }} [...]</p>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="btn-group">
+        <button routerLink="/courseItems/{{courseItem.id}}" type="button" class="btn btn-sm btn-outline-secondary"><i
+            class="bi bi-zoom-in"></i></button>
+        <!-- <button (click)="addToCart(courseItem.id)" type="button" class="btn btn-sm btn-outline-secondary"><i
+            class="bi bi-cart-plus"></i></button> -->
+      </div>
+      <small class="text-muted">{{ courseItem.price|currency:'EUR' }}</small>
+    </div>
+  </div>
+</div>

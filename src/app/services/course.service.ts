@@ -7,8 +7,8 @@ import { HttpClient } from "@angular/common/http";
 })
 export class CourseService {
 
-  private apiUrl = 'http://localhost:3000/courses';
-  // private apiUrl = 'https://my-json-server.typicode.com/houcem-h/public_courses_api/courses';
+  // private apiUrl = 'http://localhost:3000/courses';
+  private apiUrl = 'https://my-json-server.typicode.com/houcem-h/public_courses_api/courses';
 
   constructor(private http: HttpClient) { }
 
