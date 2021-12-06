@@ -8,8 +8,8 @@
       <div class="btn-group">
         <button routerLink="/courseItems/{{courseItem.id}}" type="button" class="btn btn-sm btn-outline-secondary"><i
             class="bi bi-zoom-in"></i></button>
-        <!-- <button (click)="addToCart(courseItem.id)" type="button" class="btn btn-sm btn-outline-secondary"><i
-            class="bi bi-cart-plus"></i></button> -->
+        <button (click)="addToCart.emit(courseItem.id)" type="button" class="btn btn-sm btn-outline-secondary"><i
+            class="bi bi-cart-plus"></i></button>
       </div>
       <small class="text-muted">{{ courseItem.price|currency:'EUR' }}</small>
     </div>

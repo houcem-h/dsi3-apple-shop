@@ -15,7 +15,7 @@
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col" *ngFor="let course of coursesList">
-          <app-course-item [courseItem]="course"></app-course-item>
+          <app-course-item [courseItem]="course" (addToCart)="addToCart($event)"></app-course-item>
         </div>
       </div>
     </div>
