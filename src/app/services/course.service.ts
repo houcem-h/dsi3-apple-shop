@@ -8,6 +8,7 @@ import { HttpClient } from "@angular/common/http";
 export class CourseService {
 
   private apiUrl = 'http://localhost:3000/courses';
+  // private apiUrl = 'https://my-json-server.typicode.com/houcem-h/public_courses_api/courses';
 
   constructor(private http: HttpClient) { }
 
@@ -26,6 +27,7 @@ export class CourseService {
    * @returns Observable<Course>
    */
   get(id: string) {
+    return this.http.get(this.apiUrl + '/' + id)
   }
 
   /**
@@ -33,7 +35,7 @@ export class CourseService {
    * @param course new course to create
    */
   create(course: any) {
-
+    return this.http.post(this.apiUrl, course);
   }
 
   /**
@@ -42,6 +44,7 @@ export class CourseService {
    * @param course new course data
    */
   update(id: string, course: any) {
+    return this.http.put(this.apiUrl + '/' + id, course);
   }
 
   /**
@@ -49,6 +52,6 @@ export class CourseService {
    * @param id course id to delete
    */
   delete(id: string) {
-
+    return this.http.delete(this.apiUrl + '/' + id)
   }
 }
