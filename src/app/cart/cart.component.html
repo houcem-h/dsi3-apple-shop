@@ -34,5 +34,19 @@
         <td>{{ product.price * product.quantity }}</td>
       </tr>
     </tbody>
+    <thead class="thead-light">
+      <tr>
+        <th scope="col" colspan="4" class="text-right">Pre-tax total: </th>
+        <th scope="col">{{ totalPrice | currency:'EUR ' }}</th>
+      </tr>
+      <tr>
+        <th scope="col" colspan="4" class="text-right">Tax amount (20%): </th>
+        <th scope="col">{{ totalPrice * TAX_RATE | currency:'EUR ' }}</th>
+      </tr>
+      <tr>
+        <th scope="col" colspan="4" class="text-right">Price inclusive VAT : </th>
+        <th scope="col">{{ totalPrice + (totalPrice * TAX_RATE) | currency:'EUR ' }}</th>
+      </tr>
+    </thead>
   </table>
 </ng-template>
