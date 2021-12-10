@@ -11,6 +11,10 @@
     </p>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
+  <div *ngIf="alreadyUsedEmail" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <p>Email already used</p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
   <form [formGroup]="signupForm" (ngSubmit)="signupUser()">
     <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
 
@@ -41,7 +45,6 @@
     </div>
     <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
     <p class="mt-5 mb-3">Already have an account? <a href="login.php">Login here!</a></p>
-    <p>Form Status: {{ signupForm.status }}</p>
     <p class="mt-5 mb-3 text-muted">&copy; ISET Bizerte-DSI3 - 2021</p>
   </form>
 </main>

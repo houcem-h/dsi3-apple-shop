@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from '@angular/router';
+
+import { AuthService } from "src/app/services/auth.service";
 
 @Component({
   selector: 'app-register',
@@ -9,9 +12,12 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 export class RegisterComponent implements OnInit {
 
   public signupForm: FormGroup;
+  public alreadyUsedEmail: boolean = false;
 
   constructor(
     public formBuilder: FormBuilder,
+    public authService: AuthService,
+    public router: Router
   ) {
     this.signupForm= this.formBuilder.group({
       name: ['', Validators.required],
@@ -23,11 +29,20 @@ export class RegisterComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log(this.signupForm);
   }
 
   signupUser() {
-    console.log(this.signupForm);
+    if(this.signupForm.valid) {
+      this.authService.signup(this.signupForm.value).subscribe(res => {
+        console.log(res);
+        if(res.status == 201) {
+          this.signupForm.reset();
+          this.router.navigate(['/auth/login']);
+        } else {
+          this.alreadyUsedEmail = true;
+        }
+      });
+    }
   }
 
   private passwordMatchValidator(password: string, confirm_password: string) {
