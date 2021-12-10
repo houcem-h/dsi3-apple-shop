@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'cart', loadChildren: () => import('./cart/cart.module').then(m => m.CartModule) },
   { path: 'courses', loadChildren: () => import('./courses/courses.module').then(m => m.CoursesModule) },
+  { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
   { path: '**', component: NotFoundComponent },
 ];
 
