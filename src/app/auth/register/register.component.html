@@ -1,26 +1,39 @@
 <main class="form-signin">
-  <form [formGroup]="signupForm">
+  <div *ngIf="signupForm.dirty && signupForm.invalid" class="alert alert-danger alert-dismissible fade show"
+    role="alert">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  <form [formGroup]="signupForm" (ngSubmit)="signupUser()">
     <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
 
     <div class="form-floating">
-      <input type="text" formControlName="username" class="form-control" id="floatingName" placeholder="Name">
+      <input type="text" formControlName="name" class="form-control" id="floatingName" placeholder="Name"
+        [class.is-invalid]="signupForm.dirty && signupForm.controls.name.invalid"
+        [class.is-valid]="signupForm.dirty && signupForm.controls.name.valid">
       <label for="floatingName">Name</label>
     </div>
     <div class="form-floating">
-      <input type="email" formControlName="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <input type="email" formControlName="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+        [class.is-invalid]="signupForm.dirty && signupForm.controls.email.invalid"
+        [class.is-valid]="signupForm.dirty && signupForm.controls.email.valid">
       <label for="floatingInput">Email address</label>
     </div>
     <div class="form-floating">
-      <input type="password" formControlName="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <input type="password" formControlName="password" class="form-control" id="floatingPassword"
+        placeholder="Password" [class.is-invalid]="signupForm.dirty && signupForm.controls.password.invalid"
+        [class.is-valid]="signupForm.dirty && signupForm.controls.password.valid">
       <label for="floatingPassword">Password</label>
     </div>
     <div class="form-floating">
       <input type="password" formControlName="confirm_password" class="form-control" id="floatingConfirmPassword"
-        placeholder="Confirm password">
+        placeholder="Confirm password"
+        [class.is-invalid]="signupForm.dirty && signupForm.controls.confirm_password.invalid"
+        [class.is-valid]="signupForm.dirty && signupForm.controls.confirm_password.valid">
       <label for="floatingConfirmPassword">Confirm password</label>
     </div>
     <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
     <p class="mt-5 mb-3">Already have an account? <a href="login.php">Login here!</a></p>
+    <p>Form Status: {{ signupForm.status }}</p>
     <p class="mt-5 mb-3 text-muted">&copy; ISET Bizerte-DSI3 - 2021</p>
   </form>
 </main>
