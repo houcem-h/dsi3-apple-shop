@@ -17,7 +17,7 @@ export class AuthService {
 
   API_URL: string = 'http://localhost:3000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
-  currentUser = {};
+  currentUser: any = null;
 
   constructor(
     private httpClient: HttpClient,
@@ -37,6 +37,7 @@ export class AuthService {
       .subscribe((res: any) => {
         this.localStorageService.set('access_token', res.token);
         this.getUserProfile(res.userId).subscribe((res) => {
+          this.localStorageService.set('user', {email: res.email, id: res._id, name: res.name});
           this.currentUser = res;
           this.router.navigate(['users/profile/' + res.msg._id]);
         })
