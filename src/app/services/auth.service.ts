@@ -63,4 +63,8 @@ export class AuthService {
     }
     return throwError(err);
   }
+
+  getAccessToken() {
+    return this.localStorageService.get('access_token');
+  }
 }
