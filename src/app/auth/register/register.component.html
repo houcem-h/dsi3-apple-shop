@@ -4,15 +4,12 @@
     <p *ngIf="signupForm.controls.name.errors?.required">The name is required</p>
     <p *ngIf="signupForm.controls.email.errors?.email">Please enter a valid email</p>
     <p *ngIf="signupForm.controls.email.errors?.required">An email is required</p>
+    <p *ngIf="signupForm.controls.email.errors?.used">Email already used</p>
     <p *ngIf="signupForm.controls.password.errors?.required">A password is required</p>
     <p *ngIf="signupForm.controls.password.errors?.minlength">A password is minimum 6 characters length</p>
     <p *ngIf="signupForm.controls.confirm_password.errors?.required">A password confirm is required</p>
     <p *ngIf="signupForm.controls.confirm_password.errors?.NoPassswordMatch">The password confirm doesn't match
     </p>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-  <div *ngIf="alreadyUsedEmail" class="alert alert-danger alert-dismissible fade show" role="alert">
-    <p>Email already used</p>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
   <form [formGroup]="signupForm" (ngSubmit)="signupUser()">

@@ -12,7 +12,6 @@ import { AuthService } from "src/app/services/auth.service";
 export class RegisterComponent implements OnInit {
 
   public signupForm: FormGroup;
-  public alreadyUsedEmail: boolean = false;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -38,8 +37,11 @@ export class RegisterComponent implements OnInit {
         if(res.status == 201) {
           this.signupForm.reset();
           this.router.navigate(['/auth/login']);
-        } else {
-          this.alreadyUsedEmail = true;
+        }
+      },
+      err => {
+        if (err.code == 400) {
+          this.signupForm.controls.email.setErrors({used: true});
         }
       });
     }

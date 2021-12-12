@@ -27,14 +27,14 @@ export class AuthService {
   }
 
   handleError(error: HttpErrorResponse) {
-    let msg = '';
+    let err;
     if (error.error instanceof ErrorEvent) {
       // client-side error
-      msg = error.error.message;
+      err = {message: error.error.message};
     } else {
       // server-side error
-      msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      err = { code: error.status, message: error.message };
     }
-    return throwError(msg);
+    return throwError(err);
   }
 }
