@@ -21,15 +21,31 @@
           <a class="nav-link" routerLink="/contact">Contact</a>
         </li>
       </ul>
-      <a routerLink="/cart" class="btn btn-outline-success">
-        <i class="bi-cart"></i>
-        Checkout</a>
-      <a *ngIf="currentUser" class="nav-link text-decoration-none text-light dropdown-toggle" href="#" id="dropdown03"
-        data-bs-toggle="dropdown" aria-expanded="false">{{currentUser.name}}</a>
-      <ul class="dropdown-menu" aria-labelledby="dropdown03">
-        <li><a class="dropdown-item" [routerLink]="'/customer/profile/'+currentUser.id"><i
-              class="bi bi-person-fill"></i> Profile</a></li>
-        <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-left"></i> Logout</a></li>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a routerLink="/cart" class="btn btn-outline-success">
+            <i class="bi-cart"></i>
+            Checkout</a>
+        </li>
+        <div *ngIf="currentUser.name; then dropdown else  login "></div>
+        <ng-template #dropdown>
+          <li class="nav-item">
+            <a class="nav-link text-decoration-none text-light dropdown-toggle" href="#" id="dropdown03"
+              data-bs-toggle="dropdown" aria-expanded="false">{{currentUser.name}}</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown03">
+              <li><a class="dropdown-item" [routerLink]="'/customer/profile/'+currentUser.id"><i
+                    class="bi bi-person-fill"></i> Profile</a></li>
+              <li>
+                <div class="dropdown-item" (click)="logout()"><i class="bi bi-box-arrow-left"></i> Logout</div>
+              </li>
+            </ul>
+          </li>
+        </ng-template>
+        <ng-template #login>
+          <li class="nav-item">
+            <a routerLink="/auth/login" class="btn btn-outline-secondary">Login</a>
+          </li>
+        </ng-template>
       </ul>
     </div>
   </div>
