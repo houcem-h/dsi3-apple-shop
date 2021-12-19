@@ -17,7 +17,7 @@ export class AuthService {
 
   API_URL: string = 'http://localhost:3000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
-  currentUser: any = null;
+  public isLoggedIn:boolean = false;
 
   constructor(
     private httpClient: HttpClient,
@@ -35,6 +35,7 @@ export class AuthService {
   login(user: User) {
     return this.httpClient.post<any>(`${this.API_URL}/auth/login`, user)
       .subscribe((res: any) => {
+        this.isLoggedIn = true;
         this.localStorageService.set('access_token', res.token);
         this.getUserProfile(res.userId).subscribe((res) => {
           this.localStorageService.set('user', {email: res.email, id: res._id, name: res.name});
@@ -71,6 +72,7 @@ export class AuthService {
   logout() {
     this.localStorageService.set('access_token', null);
     this.localStorageService.set('user', null);
+    this.isLoggedIn = false;
     this.router.navigate(['/']);
   }
 }

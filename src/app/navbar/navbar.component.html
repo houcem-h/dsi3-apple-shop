@@ -27,7 +27,7 @@
             <i class="bi-cart"></i>
             Checkout</a>
         </li>
-        <div *ngIf="currentUser.name; then dropdown else  login "></div>
+        <div *ngIf="isLoggedIn; then dropdown else  login "></div>
         <ng-template #dropdown>
           <li class="nav-item">
             <a class="nav-link text-decoration-none text-light dropdown-toggle" href="#" id="dropdown03"
