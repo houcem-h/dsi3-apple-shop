@@ -6,7 +6,7 @@ import { CommonModule } from "@angular/common";
 import { AuthComponent } from './auth.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { IsAuthGuard } from '../is-auth.guard';
+import { IsAuthGuard } from 'src/app/guards/is-auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
