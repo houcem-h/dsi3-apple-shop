@@ -23,7 +23,9 @@ export class AuthService {
     private httpClient: HttpClient,
     public router: Router,
     private localStorageService: LocalStorageService
-  ) { }
+  ) {
+    this.isLoggedIn = this.getAccessToken() ? true : false;
+   }
 
   signup(user: User): Observable<any> {
 
@@ -37,10 +39,10 @@ export class AuthService {
       .subscribe((res: any) => {
         this.isLoggedIn = true;
         this.localStorageService.set('access_token', res.token);
-        this.getUserProfile(res.userId).subscribe((res) => {
-          this.localStorageService.set('user', {email: res.email, id: res._id, name: res.name});
-          this.router.navigate(['customer/profile/' + res._id]);
-        })
+        this.router.navigate(['customer/profile/' + res.userId]);
+        // this.getUserProfile(res.userId).subscribe((res) => {
+        //   this.localStorageService.set('user', {email: res.email, id: res._id, name: res.name});
+        // })
       })
   }
 
