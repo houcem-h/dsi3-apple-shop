@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FormsModule } from "@angular/forms";
 
-import { IsAuthGuard } from './is-auth.guard';
+import { IsGuestGuard } from './is-guest.guard';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'cart', loadChildren: () => import('./cart/cart.module').then(m => m.CartModule) },
   { path: 'courses', loadChildren: () => import('./courses/courses.module').then(m => m.CoursesModule) },
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
-  { path: 'customer', loadChildren: () => import('./customer/customer.module').then(m => m.CustomerModule), canActivate: [IsAuthGuard] },
+  { path: 'customer', loadChildren: () => import('./customer/customer.module').then(m => m.CustomerModule), canActivate: [IsGuestGuard] },
   { path: '**', component: NotFoundComponent },
 ];
 
