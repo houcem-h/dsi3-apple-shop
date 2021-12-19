@@ -15,11 +15,10 @@ export class NavbarComponent implements OnInit {
   constructor(
     private localStorageService: LocalStorageService,
     public authService: AuthService
-  ) {
-    this.currentUser = this.localStorageService.get('user');
-  }
+  ) {}
 
   ngOnInit(): void {
+    this.currentUser = this.localStorageService.get('user');
   }
 
   logout() {
