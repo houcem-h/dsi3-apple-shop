@@ -71,6 +71,10 @@ export class AuthService {
     return this.localStorageService.get('access_token');
   }
 
+  getUserId() {
+    return this.localStorageService.get('user').id;
+  }
+
   logout() {
     this.localStorageService.set('access_token', null);
     this.localStorageService.set('user', null);

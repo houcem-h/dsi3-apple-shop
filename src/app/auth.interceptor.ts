@@ -20,7 +20,8 @@ export class AuthInterceptor implements HttpInterceptor {
     const accessToken = this.authService.getAccessToken();
     request = request.clone({
       setHeaders: {
-        Authorization: `Bearer ${accessToken}`
+        Authorization: `Bearer ${accessToken}`,
+        userId: this.authService.getUserId()
       }
     });
     return next.handle(request);
