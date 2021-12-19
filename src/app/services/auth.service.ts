@@ -39,7 +39,7 @@ export class AuthService {
         this.getUserProfile(res.userId).subscribe((res) => {
           this.localStorageService.set('user', {email: res.email, id: res._id, name: res.name});
           this.currentUser = res;
-          this.router.navigate(['users/profile/' + res._id]);
+          this.router.navigate(['customer/profile/' + res._id]);
         })
       })
   }
