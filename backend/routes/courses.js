@@ -10,4 +10,11 @@ router.get('/', (req, res) => {
     .catch(err => res.status(400).json({error: err.message}));
 });
 
+// get a course by id
+router.get('/:id', (req, res, next) => {
+  Course.findOne({ _id: req.params.id })
+      .then(course => res.status(200).json(course))
+      .catch(error => res.status(404).json({ error }));
+  });
+
 module.exports = router;
