@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const courseRouter = require('./routes/courses');
+const userRouter = require('./routes/users');
 
 const app = express();
 
@@ -21,5 +22,6 @@ mongoose.connect('mongodb://localhost:27017/dsi3-2021',
 });
 
 app.use('/api/courses', courseRouter);
+app.use('/api/auth', userRouter);
 
 module.exports = app;
