@@ -34,4 +34,11 @@ router.put('/:id', (req, res, next) => {
     .catch(error => res.status(400).json({ error }));
 });
 
+// delete a course by id
+router.delete('/:id', (req, res, next) => {
+  Course.deleteOne({ _id: req.params.id })
+    .then(() => res.status(200).json({ message: 'Course deleted !'}))
+    .catch(error => res.status(400).json({ error }));
+});
+
 module.exports = router;
