@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-const Course = require('./models/Course');
+const courseRouter = require('./routes/courses');
 
 const app = express();
 
@@ -18,10 +18,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/api/courses', (req, res) => {
-  Course.find()
-    .then(courses => res.status(200).json(courses))
-    .catch(err => res.status(400).json({error: err.message}));
-});
+app.use('/api/courses', courseRouter);
 
 module.exports = app;
