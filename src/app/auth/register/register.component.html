@@ -1,21 +1,23 @@
 <main class="form-signin">
-  <form>
+  <form [formGroup]="registerForm">
     <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
 
     <div class="form-floating">
-      <input type="text" name="username" class="form-control" id="floatingName" placeholder="Name">
+      <input type="text" formControlName="name" class="form-control" id="floatingName" placeholder="Name">
       <label for="floatingName">Name</label>
     </div>
     <div class="form-floating">
-      <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <input type="email" formControlName="email" class="form-control" id="floatingInput"
+        placeholder="name@example.com">
       <label for="floatingInput">Email address</label>
     </div>
     <div class="form-floating">
-      <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <input type="password" formControlName="password" class="form-control" id="floatingPassword"
+        placeholder="Password">
       <label for="floatingPassword">Password</label>
     </div>
     <div class="form-floating">
-      <input type="password" name="confirm_password" class="form-control" id="floatingConfirmPassword"
+      <input type="password" formControlName="confirm_password" class="form-control" id="floatingConfirmPassword"
         placeholder="Confirm password">
       <label for="floatingConfirmPassword">Confirm password</label>
     </div>
