@@ -27,4 +27,11 @@ router.post('/', (req, res, next) => {
     .catch(error => res.status(400).json({ error }));
 });
 
+// update a course by id
+router.put('/:id', (req, res, next) => {
+  Course.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
+    .then(() => res.status(200).json({ message: 'Course updated !'}))
+    .catch(error => res.status(400).json({ error }));
+});
+
 module.exports = router;
