@@ -8,7 +8,8 @@ const app = express();
 
 mongoose.connect('mongodb://localhost:27017/dsi3-2021',
   { useNewUrlParser: true,
-    useUnifiedTopology: true })
+    useUnifiedTopology: true
+  })
   .then(() => console.log('Connected successfully to MongoDB !'))
   .catch(() => console.log('Connection failed to MongoDB !'));
 
